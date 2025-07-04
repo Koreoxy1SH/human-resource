@@ -76,7 +76,7 @@
                                         <a href="" class="btn btn-warning btn-sm">Mark as Pending</a>
                                     @endif
                                    
-                                   <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                   <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
