@@ -38,7 +38,7 @@
                         <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3 ms-auto">New Employee</a>
                     </div>
 
-                    @if(session('success'))
+                    @if (session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
 
@@ -55,32 +55,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($employees as $employee)
-                            <tr>
-                                <td>{{ $employee->fullname }}</td>
-                                <td>{{ $employee->email}}</td>
-                                <td>{{ $employee->department->name }}</td>
-                                <td>{{ $employee->role->title }}</td>
-                                <td>
-                                    @if($employee->status == 'active')
-                                        <span class="text-success">{{ $employee->status }}</span>
-                                    @else
-                                        <span class="text-warning">{{ $employee->status}}</span>
-                                    @endif
-                                </td>
-                                <td>{{ $employee->salary }}</td>
-                               
-                                <td>
-                                    <a href="{{ route('employees.show', $employee->id) }}" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-sm">View</a>
-                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">View</a>
+                            @foreach ($employees as $employee)
+                                <tr>
+                                    <td>{{ $employee->fullname }}</td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->department->name }}</td>
+                                    <td>{{ $employee->role->title }}</td>
+                                    <td>
+                                        @if ($employee->status == 'active')
+                                            <span class="text-success">{{ ucfirst($employee->status) }}</span>
+                                        @else
+                                            <span class="text-warning">{{ ucfirst($employee->status) }}</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ number_format($employee->salary) }}</td>
 
-                                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="{{ route('employees.show', $employee->id) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-info btn-sm">View</a>
+                                        <a href="{{ route('employees.edit', $employee->id) }}"
+                                            class="btn btn-warning btn-sm">View</a>
+
+                                        <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
