@@ -71,10 +71,10 @@
                                     <td>{{ number_format($employee->salary) }}</td>
 
                                     <td>
-                                        <a href="{{ route('employees.show', $employee->id) }}" target="_blank"
-                                            rel="noopener noreferrer" class="btn btn-info btn-sm">View</a>
+                                        <a href="{{ route('employees.show', $employee->id) }}"
+                                            class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('employees.edit', $employee->id) }}"
-                                            class="btn btn-warning btn-sm">View</a>
+                                            class="btn btn-warning btn-sm">Edit</a>
 
                                         <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
                                             class="d-inline">
