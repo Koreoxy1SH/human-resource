@@ -129,7 +129,7 @@
             </div>
         </div>
         <div id="main">
-          
+
             @yield('content')
 
             <footer>
@@ -164,6 +164,11 @@
     <script>
         let date = flatpickr('.date', {
             dateFormat: "Y-m-d",
+        });
+
+        let datetime = flatpickr('.datetime', {
+            dateFormat: "Y-m-d H:i:s",
+            enableTime: true
         });
     </script>
 
