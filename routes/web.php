@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\PayrollController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,9 @@ Route::resource('/roles', RoleController::class);
 
 //handle presences
 Route::resource('/presences', PresenceController::class);
+
+//handle payrolls
+Route::resource('/payrolls', PayrollController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
